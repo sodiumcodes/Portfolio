@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naina Dugar — RPG Pixel Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Retro Fonts: Press Start 2P & Silkscreen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        pixel: ['"Press Start 2P"', 'monospace'],
+                        retro: ['"Silkscreen"', 'monospace'],
+                    },
+                    colors: {
+                        rpg: {
+                            bg: '#0a0a0c',
+                            card: '#16161a',
+                            panel: '#24242a',
+                            border: '#3a3a42',
+                            white: '#f0f0f5',
+                            gold: '#d9a046',
+                            goldHover: '#f0b454',
+                            gray: '#8a8a98',
+                            darkGold: '#8c6221',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="selection:bg-d9a046 selection:text-black">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
