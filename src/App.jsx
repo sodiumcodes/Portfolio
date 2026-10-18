@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GameIntro from './components/GameIntro';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Quests from './components/Quests';
@@ -9,6 +10,7 @@ import Contact from './components/Contact';
 import FloatingCharacter from './components/FloatingCharacter';
 
 export default function App() {
+  const [introActive, setIntroActive] = useState(true);
   const [speechText, setSpeechText] = useState('Greetings! I am Naina Bot. Click me or explore my quests!');
   const [animKey, setAnimKey] = useState(0);
 
@@ -19,6 +21,8 @@ export default function App() {
 
   return (
     <>
+      {introActive && <GameIntro onComplete={() => setIntroActive(false)} />}
+
       {/* TOP RPG HUD NAV HEADER */}
       <Navbar onCharacterTalk={handleCharacterTalk} />
 

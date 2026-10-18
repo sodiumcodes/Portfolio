@@ -23,7 +23,7 @@ export default function SkillTree({ onCharacterTalk }) {
               <Bot className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-pixel text-xs text-[#f0f0f5]">AI & GEN-AI</h3>
+              <h3 className="font-pixel text-xs text-[#f0f0f5]">AI</h3>
             </div>
           </div>
           <div className="flex flex-wrap gap-2 text-xs">

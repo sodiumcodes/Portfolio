@@ -119,11 +119,6 @@ export default function Quests({ onCharacterTalk }) {
           {(activeFilter === 'all' || activeFilter === 'fullstack') && (
             <div className="quest-card pixel-box p-5 space-y-4 flex flex-col justify-between" data-category="fullstack">
               <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <span className="px-2 py-1 bg-[#24242a] border border-[#d9a046] text-[10px] font-pixel text-[#d9a046]">QUEST #01</span>
-                  <span className="text-xs font-pixel text-[#f0f0f5]">+1200 XP</span>
-                </div>
-
                 {/* Image Placeholder Frame */}
                 <div className="relative aspect-video image-placeholder-frame flex flex-col items-center justify-center p-2 text-center" id="p1-frame">
                   {!questImages.p1 && (
@@ -168,7 +163,7 @@ export default function Quests({ onCharacterTalk }) {
                   SPECS <ChevronRight className="w-3.5 h-3.5" />
                 </button>
                 <div className="flex gap-2">
-                  <a href="https://github.com/sodiumcodes" target="_blank" rel="noopener noreferrer" className="pixel-btn px-2 py-1 text-xs" title="GitHub Source">
+                  <a href="https://github.com/sodiumcodes/Socially" target="_blank" rel="noopener noreferrer" className="pixel-btn px-2 py-1 text-xs" title="GitHub Source">
                     <Github className="w-4 h-4" />
                   </a>
                   <a href="https://socially-nine-psi.vercel.app/#/feed" target="_blank" rel="noopener noreferrer" className="pixel-btn-gold px-2 py-1 text-xs" title="Live Demo">
@@ -183,10 +178,6 @@ export default function Quests({ onCharacterTalk }) {
           {(activeFilter === 'all' || activeFilter === 'ai') && (
             <div className="quest-card pixel-box p-5 space-y-4 flex flex-col justify-between" data-category="ai">
               <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <span className="px-2 py-1 bg-[#24242a] border border-[#d9a046] text-[10px] font-pixel text-[#d9a046]">QUEST #02</span>
-                  <span className="text-xs font-pixel text-[#f0f0f5]">+1500 XP</span>
-                </div>
 
                 {/* Image Placeholder Frame */}
                 <div className="relative aspect-video image-placeholder-frame flex flex-col items-center justify-center p-2 text-center" id="p2-frame">
@@ -232,7 +223,7 @@ export default function Quests({ onCharacterTalk }) {
                   SPECS <ChevronRight className="w-3.5 h-3.5" />
                 </button>
                 <div className="flex gap-2">
-                  <a href="https://github.com/sodiumcodes" target="_blank" rel="noopener noreferrer" className="pixel-btn px-2 py-1 text-xs" title="GitHub Source">
+                  <a href="https://github.com/sodiumcodes/InsightFlow-AI" target="_blank" rel="noopener noreferrer" className="pixel-btn px-2 py-1 text-xs" title="GitHub Source">
                     <Github className="w-4 h-4" />
                   </a>
                   <a href="https://insight-flow-ai-001.streamlit.app/" target="_blank" rel="noopener noreferrer" className="pixel-btn-gold px-2 py-1 text-xs" title="Live Demo">
@@ -247,11 +238,6 @@ export default function Quests({ onCharacterTalk }) {
           {(activeFilter === 'all' || activeFilter === 'data') && (
             <div className="quest-card pixel-box p-5 space-y-4 flex flex-col justify-between" data-category="data">
               <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <span className="px-2 py-1 bg-[#24242a] border border-[#d9a046] text-[10px] font-pixel text-[#d9a046]">QUEST #03</span>
-                  <span className="text-xs font-pixel text-[#f0f0f5]">+1000 XP</span>
-                </div>
-
                 {/* Image Placeholder Frame */}
                 <div className="relative aspect-video image-placeholder-frame flex flex-col items-center justify-center p-2 text-center" id="p3-frame">
                   {!questImages.p3 && (
@@ -296,7 +282,7 @@ export default function Quests({ onCharacterTalk }) {
                   SPECS <ChevronRight className="w-3.5 h-3.5" />
                 </button>
                 <div className="flex gap-2">
-                  <a href="https://github.com/sodiumcodes" target="_blank" rel="noopener noreferrer" className="pixel-btn px-2 py-1 text-xs" title="GitHub Source">
+                  <a href="https://github.com/sodiumcodes/RetailPulse" target="_blank" rel="noopener noreferrer" className="pixel-btn px-2 py-1 text-xs" title="GitHub Source">
                     <Github className="w-4 h-4" />
                   </a>
                   <a href="https://retail-pulse-sales-dashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" className="pixel-btn-gold px-2 py-1 text-xs" title="Live Demo">

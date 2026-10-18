@@ -15,21 +15,11 @@ export default function QuestModal({ quest, onClose }) {
         <div id="modal-quest-content">
           <div className="flex justify-between items-center border-b-2 border-[#24242a] pb-3">
             <h3 className="font-pixel text-sm text-[#d9a046]">{quest.title}</h3>
-            <span className="font-pixel text-xs text-[#f0f0f5]">{quest.xp}</span>
           </div>
           <div className="space-y-4 pt-2">
+            
             <div>
-              <div className="text-[10px] font-pixel text-[#8a8a98] mb-2">TECH STACK BADGES</div>
-              <div className="flex flex-wrap gap-2">
-                {quest.stack.map((s, idx) => (
-                  <span key={idx} className="px-2 py-1 bg-[#24242a] border border-[#f0f0f5] text-xs font-pixel text-[#d9a046]">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <div className="text-[10px] font-pixel text-[#8a8a98] mb-2">QUEST ARCHITECTURE & SPECIFICATIONS</div>
+              <div className="text-[10px] font-pixel text-[#8a8a98] mb-2"></div>
               <ul className="space-y-2 text-xs text-[#f0f0f5]">
                 {quest.details.map((d, idx) => (
                   <li key={idx} className="flex items-start gap-2">

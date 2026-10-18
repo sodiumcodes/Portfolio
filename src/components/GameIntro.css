@@ -1,0 +1,242 @@
+/* Game Intro Overlay & Reveal Animations */
+
+/* Temporary classes for top-level sections during reveal */
+.intro-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.intro-reveal {
+  visibility: visible !important;
+  pointer-events: auto !important;
+  animation: introSectionGlitchIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+}
+
+@keyframes introSectionGlitchIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: drop-shadow(4px 0 #ff0055) drop-shadow(-4px 0 #00ffff);
+  }
+  30% {
+    opacity: 0.85;
+    transform: translateY(-2px);
+    filter: drop-shadow(-3px 0 #d9a046) drop-shadow(3px 0 #00ffff);
+  }
+  60% {
+    opacity: 0.4;
+    transform: translateY(2px);
+    filter: none;
+  }
+  85% {
+    opacity: 0.95;
+    transform: translateY(-1px);
+    filter: drop-shadow(2px 0 #d9a046);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: none;
+  }
+}
+
+/* Background scanlines and CRT vignette */
+.game-scanlines {
+  background: linear-gradient(
+    rgba(10, 10, 12, 0) 50%,
+    rgba(0, 0, 0, 0.35) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(217, 160, 70, 0.02),
+    rgba(0, 0, 0, 0),
+    rgba(217, 160, 70, 0.02)
+  );
+  background-size: 100% 4px, 8px 100%;
+}
+
+.game-vignette {
+  background: radial-gradient(circle at center, transparent 40%, rgba(10, 10, 12, 0.88) 100%);
+}
+
+/* Floating Pixel Particles */
+@keyframes pixelTwinkle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+.game-particle {
+  animation: pixelTwinkle ease-in-out infinite alternate;
+}
+
+/* Pixel Icon Bouncing */
+@keyframes pixelBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.game-icon-bounce {
+  animation: pixelBounce 1.2s ease-in-out infinite;
+}
+
+/* Title Glow */
+.game-title-glow {
+  text-shadow: 0 0 10px rgba(217, 160, 70, 0.8), 0 0 20px rgba(217, 160, 70, 0.4);
+}
+
+/* Line Pop Animation */
+@keyframes linePopIn {
+  0% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.game-line-pop {
+  animation: linePopIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Bar 100% Flash */
+@keyframes barFlashAnim {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.7) drop-shadow(0 0 8px #d9a046);
+  }
+}
+
+.game-bar-flash {
+  animation: barFlashAnim 0.6s ease-in-out infinite;
+}
+
+/* Blink Prompt */
+@keyframes gameBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.game-prompt-blink {
+  animation: gameBlink 0.8s infinite;
+}
+
+/* Shrinking 7-second timer bar */
+@keyframes shrinkTimerAnim {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.game-shrink-timer {
+  animation: shrinkTimerAnim 7s linear forwards;
+}
+
+/* Phase 4a: Exit Glitch (0.5s) */
+@keyframes introExitGlitchAnim {
+  0% {
+    transform: translate(0, 0);
+    filter: none;
+  }
+  15% {
+    transform: translate(-6px, 2px);
+    filter: drop-shadow(6px 0 #ff0055) drop-shadow(-6px 0 #00ffff);
+    clip-path: inset(12% 0 28% 0);
+  }
+  30% {
+    transform: translate(6px, -3px);
+    filter: drop-shadow(-6px 0 #ff0055) drop-shadow(6px 0 #00ffff);
+    clip-path: inset(45% 0 15% 0);
+  }
+  45% {
+    transform: translate(-4px, -2px);
+    filter: drop-shadow(4px 0 #ff0055) drop-shadow(-4px 0 #00ffff);
+    clip-path: inset(68% 0 8% 0);
+  }
+  60% {
+    transform: translate(5px, 3px);
+    filter: drop-shadow(-5px 0 #d9a046) drop-shadow(5px 0 #00ffff);
+    clip-path: inset(8% 0 62% 0);
+  }
+  75% {
+    transform: translate(-5px, 1px);
+    filter: drop-shadow(6px 0 #ff0055) drop-shadow(-6px 0 #00ffff);
+    clip-path: inset(28% 0 32% 0);
+  }
+  90% {
+    transform: translate(3px, -2px);
+    filter: drop-shadow(-4px 0 #ff0055) drop-shadow(4px 0 #00ffff);
+    clip-path: none;
+  }
+  100% {
+    transform: translate(0, 0);
+    filter: none;
+    clip-path: none;
+  }
+}
+
+.intro-exit-glitch {
+  animation: introExitGlitchAnim 0.5s steps(1, end) forwards;
+}
+
+/* Phase 4b: Overlay Slide Up (0.6s) */
+@keyframes introExitSlideUpAnim {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.intro-exit-slide {
+  animation: introExitSlideUpAnim 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards !important;
+  pointer-events: none !important;
+}
+
+/* Reduced Motion Fallback */
+@media (prefers-reduced-motion: reduce) {
+  .game-particle,
+  .game-icon-bounce,
+  .game-bar-flash,
+  .game-line-pop,
+  .game-prompt-blink,
+  .game-shrink-timer,
+  .intro-exit-glitch,
+  .intro-exit-slide,
+  .intro-reveal {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+  }
+
+  .intro-exit-slide {
+    opacity: 0 !important;
+  }
+}
