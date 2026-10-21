@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TerminalSquare } from 'lucide-react';
 
 export default function Terminal() {
   const [outputLines, setOutputLines] = useState([
@@ -56,45 +55,68 @@ export default function Terminal() {
   };
 
   return (
-    <section id="terminal" className="space-y-6">
-      <div className="border-b-4 border-[#24242a] pb-4">
-        <h2 className="font-pixel text-xl sm:text-2xl text-[#d9a046] flex items-center gap-3">
-          <TerminalSquare className="w-6 h-6" /> QUEST CONSOLE & TERMINAL
+    <section id="terminal" className="pt-6 relative space-y-10">
+      
+      {/* Section Header */}
+      <div className="text-center space-y-2 mb-8">
+        <div className="flex justify-center gap-2 mb-1" aria-hidden="true">
+          <span className="w-2 h-2 bg-[#d9a046] pixel-notch-sm"></span>
+          <span className="w-2 h-2 bg-[#d9a046] pixel-notch-sm"></span>
+          <span className="w-2 h-2 bg-[#d9a046] pixel-notch-sm"></span>
+        </div>
+
+        <h2 className="pixel-title-3d text-2xl sm:text-3xl md:text-4xl">
+          Quest Console
         </h2>
-        <p className="text-xs text-[#8a8a98] mt-1">Type commands like 'help', 'about', 'skills', or 'contact'</p>
+
+        <p className="text-xs sm:text-sm text-[#8a8a98] font-sans">
+          Type commands like 'help', 'about', 'skills', or 'contact'
+        </p>
       </div>
 
-      <div className="pixel-box p-4 sm:p-6 bg-[#0a0a0c] space-y-4">
-        <div className="flex items-center justify-between border-b border-[#24242a] pb-3 text-xs text-[#8a8a98]">
-          <span className="font-pixel text-[#d9a046]">NAINA_BOT v2.6 TERMINAL</span>
-          <span>TYPE 'help' FOR COMMANDS</span>
-        </div>
+      {/* Terminal Screen Frame */}
+      <div className="max-w-4xl mx-auto pixel-frame-dark pixel-notch-lg">
+        <div className="pixel-frame-dark-inner pixel-notch-lg p-5 sm:p-7 space-y-4 bg-[#09090c]">
+          
+          {/* Header Bar */}
+          <div className="flex items-center justify-between border-b border-[#20202c] pb-3 text-[10px] font-pixel text-[#8a8a98]">
+            <span className="text-[#d9a046]">NAINA_BOT v2.6 TERMINAL</span>
+            <span className="hidden sm:inline">TYPE 'help' FOR COMMANDS</span>
+          </div>
 
-        {/* Terminal Output Buffer */}
-        <div 
-          id="terminal-output" 
-          ref={outputRef}
-          className="font-retro text-xs text-[#f0f0f5] space-y-2 h-48 overflow-y-auto pr-2"
-        >
-          {outputLines.map((line, idx) => (
-            <p key={idx} className={line.color}>{line.text}</p>
-          ))}
-        </div>
+          {/* Terminal Output Buffer */}
+          <div 
+            id="terminal-output" 
+            ref={outputRef}
+            className="font-mono text-xs sm:text-[13px] text-[#f0f0f5] space-y-2 h-52 overflow-y-auto pr-2 leading-relaxed"
+          >
+            {outputLines.map((line, idx) => (
+              <p key={idx} className={line.color}>{line.text}</p>
+            ))}
+          </div>
 
-        {/* Terminal Input Form */}
-        <form onSubmit={handleSubmit} className="flex gap-2 pt-2 border-t border-[#24242a]">
-          <span className="text-[#d9a046] font-pixel text-xs">&gt;</span>
-          <input 
-            type="text" 
-            id="terminal-input" 
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Enter command..." 
-            className="flex-1 bg-transparent text-xs text-[#f0f0f5] font-retro focus:outline-none" 
-          />
-          <button type="submit" className="pixel-btn-gold px-3 py-1 text-xs font-pixel">RUN</button>
-        </form>
+          {/* Terminal Input Form */}
+          <form onSubmit={handleSubmit} className="flex items-center gap-2.5 pt-3 border-t border-[#20202c]">
+            <span className="text-[#d9a046] font-pixel text-xs">&gt;</span>
+            <input 
+              type="text" 
+              id="terminal-input" 
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Enter command..." 
+              className="flex-1 bg-transparent text-xs sm:text-[13px] text-[#f0f0f5] font-mono focus:outline-none placeholder:text-[#5a5a68]" 
+            />
+            <button 
+              type="submit" 
+              className="pixel-btn-gold text-[10px] px-3.5 py-1.5 pixel-notch-sm"
+            >
+              RUN
+            </button>
+          </form>
+
+        </div>
       </div>
+
     </section>
   );
 }

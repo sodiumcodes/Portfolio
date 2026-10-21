@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Sword, UserPlus } from 'lucide-react';
-import { Github, Linkedin } from './Icons';
 import profilePic from '../assets/picture_for_portfolio.jpg';
 
 export default function Hero({ onCharacterTalk }) {
@@ -8,7 +6,7 @@ export default function Hero({ onCharacterTalk }) {
   const fileInputRef = useRef(null);
 
   const handleContainerClick = () => {
-    if (!photoUrl && fileInputRef.current) {
+    if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
@@ -25,97 +23,124 @@ export default function Hero({ onCharacterTalk }) {
     }
   };
 
-  const handleRemovePhoto = (e) => {
-    e.stopPropagation();
-    setPhotoUrl(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
-
   return (
-    <section id="hero" className="pt-6">
-      <div className="pixel-box-gold p-6 sm:p-10 space-y-8">
+    <section id="hero" className="pt-8 md:pt-12 relative">
+      {/* Sparse decorative pixel stars matching the mockup */}
+      <span className="pixel-star absolute top-2 left-[48%] w-2.5 h-2.5 opacity-60" aria-hidden="true" />
+      <span className="pixel-star absolute bottom-32 left-[50%] w-2 h-2 opacity-50" style={{ animationDelay: '1.5s' }} aria-hidden="true" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Left Column: Stats, Headline, Bio, HP/XP bars & Buttons */}
+        <div className="lg:col-span-7 space-y-7">
           
-          {/* Character Stats & Bio */}
-          <div className="lg:col-span-8 space-y-6">
-            
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#24242a] border border-[#f0f0f5] text-xs font-pixel text-[#d9a046]">
-              <span className="w-2 h-2 bg-[#d9a046] animate-ping"></span>
+          {/* Status Tag */}
+          <div className="inline-block pixel-frame-dark pixel-notch-sm">
+            <div className="pixel-frame-dark-inner pixel-notch-sm px-3.5 py-1.5 text-[10px] font-pixel text-[#d9a046] tracking-wider">
               STATUS: READY FOR NEXT QUEST
-            </div>
-
-            <h1 className="font-pixel text-2xl sm:text-3xl md:text-4xl text-[#f0f0f5] leading-relaxed">
-              AI DEVELOPER & FULL-STACK ENGINEER
-            </h1>
-
-            <p className="text-sm md:text-base text-[#8a8a98] leading-relaxed">
-              Building Autonomous Multi-Agent Workflows, RAG Architecture, and High-Performance Web Applications. Currently pursuing B.Sc. in Computer Science & Data Analytics at <strong className="text-[#f0f0f5]">IIT Patna (2024 - 2028)</strong>.
-            </p>
-
-            {/* HUD Health & XP Bars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
-              <div>
-                <div className="flex justify-between text-xs font-pixel mb-1 text-[#f0f0f5]">
-                  <span>HP (DATA LOGIC)</span>
-                  <span>100/100</span>
-                </div>
-                <div className="pixel-bar-bg">
-                  <div className="pixel-bar-fill"></div>
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between text-xs font-pixel mb-1 text-[#d9a046]">
-                  <span>XP (500+ DSA SOLVED)</span>
-                  <span>MAX LEVEL</span>
-                </div>
-                <div className="pixel-bar-bg">
-                  <div className="pixel-bar-fill" style={{ width: '92%' }}></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a href="#quests" className="pixel-btn-gold px-5 py-3 text-xs font-pixel flex items-center gap-2">
-                <Sword className="w-4 h-4" /> VIEW QUEST LOG
-              </a>
-              <a href="https://github.com/sodiumcodes" target="_blank" rel="noopener noreferrer" className="pixel-btn px-5 py-3 text-xs font-pixel flex items-center gap-2">
-                <Github className="w-4 h-4" /> GITHUB
-              </a>
-              <a href="https://linkedin.com/in/nainadugar" target="_blank" rel="noopener noreferrer" className="pixel-btn px-5 py-3 text-xs font-pixel flex items-center gap-2">
-                <Linkedin className="w-4 h-4" /> LINKEDIN
-              </a>
             </div>
           </div>
 
-          {/* Photo Attachment Frame */}
-          <div className="lg:col-span-4 flex justify-center">
-            <div className="w-full max-w-xs pixel-box p-4 space-y-4 text-center">
-              <div className="font-pixel text-xs text-[#d9a046]">PLAYER PROFILE PHOTO</div>
+          {/* 3D Main Headline in Title Case */}
+          <h1 className="pixel-title-3d-lg text-3xl sm:text-4xl lg:text-[42px] leading-tight space-y-2">
+            <div>AI Developer &amp;</div>
+            <div>Full-Stack</div>
+            <div>Engineer</div>
+          </h1>
+
+          {/* Bio text - clean Inter font, normal sentence case, ~55ch */}
+          <p className="text-sm sm:text-base text-[#9da0b0] font-sans leading-relaxed max-w-[54ch]">
+            Building autonomous multi-agent workflows, RAG architecture, and high-performance web apps. B.Sc. in Computer Science &amp; Data Analytics at IIT Patna.
+          </p>
+
+          {/* HP and XP Segmented Bars */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg pt-1">
+            <div>
+              <div className="flex justify-between text-[10px] font-pixel mb-1.5 text-[#d9a046]">
+                <span>HP</span>
+                <span>100/100</span>
+              </div>
+              <div className="pixel-bar-bg pixel-notch-sm">
+                <div className="pixel-bar-segments"></div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between text-[10px] font-pixel mb-1.5 text-[#d9a046]">
+                <span>XP</span>
+                <span>500+ DSA</span>
+              </div>
+              <div className="pixel-bar-bg pixel-notch-sm">
+                <div className="pixel-bar-segments" style={{ width: '92%' }}></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <a 
+              href="#quests" 
+              className="pixel-btn-gold pixel-notch-sm"
+            >
+              VIEW QUEST LOG
+            </a>
+
+            <a 
+              href="https://github.com/sodiumcodes" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="pixel-btn-ghost pixel-notch-sm"
+            >
+              <span className="pixel-btn-ghost-inner pixel-notch-sm">
+                GITHUB
+              </span>
+            </a>
+
+            <a 
+              href="https://linkedin.com/in/nainadugar" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="pixel-btn-ghost pixel-notch-sm"
+            >
+              <span className="pixel-btn-ghost-inner pixel-notch-sm">
+                LINKEDIN
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Column: Player Profile Frame */}
+        <div className="lg:col-span-5 flex justify-center">
+          <div className="w-full max-w-[420px] pixel-frame-gold pixel-notch-lg">
+            <div className="pixel-frame-gold-inner pixel-notch-lg p-6 sm:p-8 space-y-5">
               
+              <div className="text-center font-pixel text-xs text-[#d9a046] tracking-wider">
+                PLAYER PROFILE
+              </div>
+
+              {/* Dashed photo placeholder container */}
               <div 
-                id="hero-photo-container" 
+                id="hero-photo-container"
                 onClick={handleContainerClick}
-                className="relative aspect-square image-placeholder-frame flex flex-col items-center justify-center p-4 cursor-pointer group overflow-hidden"
+                className="relative aspect-square image-placeholder-frame flex flex-col items-center justify-center p-4 cursor-pointer group overflow-hidden pixel-notch"
+                title="Click to change profile picture"
               >
-                {!photoUrl && (
-                  <div id="hero-placeholder-text" className="space-y-2">
-                    <UserPlus className="w-8 h-8 text-[#8a8a98] mx-auto group-hover:text-[#d9a046]" />
-                    <p className="text-xs text-[#8a8a98] font-retro">[ ADD YOUR AVATAR / PHOTO HERE ]</p>
-                    <span className="inline-block px-2 py-1 bg-[#24242a] text-[10px] text-[#f0f0f5] border border-[#f0f0f5]">CLICK TO ATTACH</span>
-                  </div>
-                )}
-                {photoUrl && (
+                {photoUrl ? (
                   <img 
-                    id="hero-photo-img" 
+                    id="hero-photo-img"
                     src={photoUrl} 
                     alt="Naina Dugar" 
                     className="absolute inset-0 w-full h-full object-cover" 
                   />
+                ) : (
+                  <div className="text-center space-y-2">
+                    <p className="text-xs text-[#8a8a98] font-sans">Your profile photo</p>
+                    <span className="inline-block px-2 py-1 bg-[#1a1a24] text-[9px] font-pixel text-[#d9a046] border border-[#3a3a48] pixel-notch-sm">
+                      CLICK TO UPLOAD
+                    </span>
+                  </div>
                 )}
+                
                 <input 
                   type="file" 
                   id="hero-photo-input" 
@@ -125,11 +150,11 @@ export default function Hero({ onCharacterTalk }) {
                   className="hidden" 
                 />
               </div>
-              <div className="text-[10px] text-[#8a8a98]">CLASS: AI ARCHITECT</div>
+
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
   );

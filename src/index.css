@@ -1,107 +1,321 @@
-/* Strict Retro pixel rules - Zero gradients, Zero Neon */
+/* Strict Retro Pixel Rules - Clean Typography & Gamified Arcade Aesthetic */
 * {
     image-rendering: pixelated;
     box-sizing: border-box;
 }
 
 body {
-    background-color: #0a0a0c;
+    background-color: #09090c;
+    /* Map / Graph Paper Pixel Grid: 36px cells with thin subtle lines */
+    background-image: 
+        linear-gradient(to right, rgba(217, 160, 70, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(217, 160, 70, 0.035) 1px, transparent 1px);
+    background-size: 36px 36px;
+    background-attachment: fixed;
     color: #f0f0f5;
-    font-family: 'Silkscreen', monospace;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;   
+    line-height: 1.6;
     overflow-x: hidden;
+    letter-spacing: -0.01em;
 }
 
-/* Retro Pixel Border System */
-.pixel-box {
-    background-color: #16161a;
-    border: 4px solid #f0f0f5;
-    box-shadow: 
-        -4px 0 0 0 #0a0a0c,
-         4px 0 0 0 #0a0a0c,
-         0 -4px 0 0 #0a0a0c,
-         0  4px 0 0 #0a0a0c,
-         0 0 0 4px #f0f0f5;
+/* Faint CRT Scanline Overlay - pure CSS, clicks pass through */
+.pixel-scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: linear-gradient(
+        rgba(9, 9, 12, 0) 50%,
+        rgba(0, 0, 0, 0.22) 50%
+    );
+    background-size: 100% 4px;
+    opacity: 0.65;
+}
+
+/* 2-Step Pixel Notched Corners */
+.pixel-notch {
+    clip-path: polygon(
+        0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+        calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+        100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+        8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+    );
+}
+
+.pixel-notch-sm {
+    clip-path: polygon(
+        0 4px, 2px 4px, 2px 2px, 4px 2px, 4px 0,
+        calc(100% - 4px) 0, calc(100% - 4px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 4px, 100% 4px,
+        100% calc(100% - 4px), calc(100% - 2px) calc(100% - 4px), calc(100% - 2px) calc(100% - 2px), calc(100% - 4px) calc(100% - 2px), calc(100% - 4px) 100%,
+        4px 100%, 4px calc(100% - 2px), 2px calc(100% - 2px), 2px calc(100% - 4px), 0 calc(100% - 4px)
+    );
+}
+
+.pixel-notch-lg {
+    clip-path: polygon(
+        0 12px, 6px 12px, 6px 6px, 12px 6px, 12px 0,
+        calc(100% - 12px) 0, calc(100% - 12px) 6px, calc(100% - 6px) 6px, calc(100% - 6px) 12px, 100% 12px,
+        100% calc(100% - 12px), calc(100% - 6px) calc(100% - 12px), calc(100% - 6px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%,
+        12px 100%, 12px calc(100% - 6px), 6px calc(100% - 6px), 6px calc(100% - 12px), 0 calc(100% - 12px)
+    );
+}
+
+/* Stepped Notched Border Containers */
+.pixel-frame-gold {
+    background-color: #d9a046;
+    padding: 3px;
     position: relative;
 }
 
-.pixel-box-gold {
-    background-color: #16161a;
-    border: 4px solid #d9a046;
-    box-shadow: 
-        -4px 0 0 0 #0a0a0c,
-         4px 0 0 0 #0a0a0c,
-         0 -4px 0 0 #0a0a0c,
-         0  4px 0 0 #0a0a0c,
-         0 0 0 4px #d9a046;
+.pixel-frame-gold-inner {
+    background-color: #0d0d12;
+    width: 100%;
+    height: 100%;
+}
+
+.pixel-frame-dark {
+    background-color: #2a2a36;
+    padding: 2px;
     position: relative;
+    transition: background-color 0.15s steps(2);
 }
 
-.pixel-btn {
-    background-color: #24242a;
-    color: #f0f0f5;
-    border: 2px solid #f0f0f5;
-    box-shadow: 0 4px 0 0 #f0f0f5;
-    transition: transform 0.05s, box-shadow 0.05s, background-color 0.1s;
+.pixel-frame-dark:hover {
+    background-color: #4a4a58;
 }
 
-.pixel-btn:hover {
-    background-color: #3a3a42;
+.pixel-frame-dark-inner {
+    background-color: #0d0d12;
+    width: 100%;
+    height: 100%;
+}
+
+/* 3D Retro Pixel Headings with Amber Shadow */
+.pixel-title-3d {
+    font-family: 'Press Start 2P', monospace;
+    color: #ffffff;
+    text-shadow: 
+        0 3px 0 #d9a046,
+        3px 3px 0 #d9a046,
+        3px 0 0 #d9a046,
+        4px 4px 0 #734e15;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+.pixel-title-3d-lg {
+    font-family: 'Press Start 2P', monospace;
+    color: #ffffff;
+    text-shadow: 
+        0 4px 0 #d9a046,
+        4px 4px 0 #d9a046,
+        4px 0 0 #d9a046,
+        6px 6px 0 #664412;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+}
+
+/* Secondary Pixel Headings */
+.pixel-heading {
+    font-family: 'Press Start 2P', monospace;
     color: #d9a046;
+    text-shadow: 2px 2px 0 #000000;
+    line-height: 1.4;
 }
 
-.pixel-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 0 #f0f0f5;
+.pixel-heading-subtle {
+    font-family: 'Press Start 2P', monospace;
+    color: #f0f0f5;
+    text-shadow: 1px 1px 0 #000000;
 }
 
+/* Stepped Segmented HP & XP Bars (Clean blocky retro segments) */
+.pixel-bar-bg {
+    background: #09090c;
+    border: 2px solid #2a2a35;
+    height: 16px;
+    width: 100%;
+    padding: 2px;
+}
+
+.pixel-bar-segments {
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        #d9a046 0px,
+        #d9a046 6px,
+        transparent 6px,
+        transparent 9px
+    );
+    transition: width 0.4s steps(6);
+}
+
+.pixel-bar-segments-white {
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        #f0f0f5 0px,
+        #f0f0f5 6px,
+        transparent 6px,
+        transparent 9px
+    );
+    transition: width 0.4s steps(6);
+}
+
+/* Buttons with Stepped Retro Notched Corners */
 .pixel-btn-gold {
     background-color: #d9a046;
-    color: #0a0a0c;
-    border: 2px solid #f0f0f5;
-    box-shadow: 0 4px 0 0 #f0f0f5;
+    color: #09090c;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
     font-weight: bold;
+    padding: 10px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 0 #734e15;
+    transition: transform 0.15s steps(2), box-shadow 0.15s steps(2), background-color 0.15s steps(2);
 }
 
 .pixel-btn-gold:hover {
     background-color: #f0b454;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 0 #734e15;
 }
 
 .pixel-btn-gold:active {
     transform: translateY(4px);
-    box-shadow: 0 0 0 0 #f0f0f5;
+    box-shadow: 0 0 0 0 #734e15;
 }
 
-/* Sprite Pixel Art Avatar Animations */
-.pixel-hero-sprite {
-    width: 64px;
-    height: 64px;
+.pixel-btn-ghost {
+    background: #2a2a35;
+    padding: 2px;
+    display: inline-flex;
+    cursor: pointer;
+    transition: background-color 0.15s steps(2), transform 0.15s steps(2), box-shadow 0.15s steps(2);
+    box-shadow: 0 3px 0 0 #000000;
+}
+
+.pixel-btn-ghost:hover {
     background-color: #d9a046;
-    position: relative;
-    animation: spriteIdle 1s infinite alternate steps(2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 0 #000000;
 }
 
-@keyframes spriteIdle {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-4px); }
+.pixel-btn-ghost:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 0 #000000;
 }
 
-/* Pixel Avatar Face Construction using Pure CSS Pixels */
+.pixel-btn-ghost-inner {
+    background: #0d0d12;
+    color: #f0f0f5;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    padding: 8px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    height: 100%;
+    transition: color 0.15s steps(2);
+}
+
+.pixel-btn-ghost:hover .pixel-btn-ghost-inner {
+    color: #d9a046;
+}
+
+/* Generic legacy .pixel-btn wrapper for compatibility */
+.pixel-btn {
+    background-color: #14141a;
+    color: #f0f0f5;
+    border: 2px solid #2e2e38;
+    box-shadow: 0 3px 0 0 #000000;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: transform 0.15s steps(2), box-shadow 0.15s steps(2), border-color 0.15s steps(2), color 0.15s steps(2);
+}
+
+.pixel-btn:hover {
+    border-color: #d9a046;
+    color: #d9a046;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 0 #000000;
+}
+
+.pixel-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 0 #000000;
+}
+
+/* Pure CSS Twinkling Pixel Stars */
+@keyframes pixelStarTwinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.3);
+    }
+}
+
+.pixel-star {
+    display: inline-block;
+    background-color: #d9a046;
+    animation: pixelStarTwinkle 4s steps(3) infinite;
+}
+
+/* Pixel Section Divider */
+.pixel-divider {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        #d9a046 0px,
+        #d9a046 6px,
+        transparent 6px,
+        transparent 14px
+    );
+    opacity: 0.25;
+    margin: 0 auto;
+}
+
+/* Stepped Scroll Reveal Animations */
+.pixel-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.45s steps(5), transform 0.45s steps(5);
+}
+
+.pixel-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Pixel Avatar Face Construction */
 .character-face {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     background: #f0f0f5;
     position: relative;
-    box-shadow: inset -4px -4px 0 0 #8a8a98;
+    box-shadow: inset -3px -3px 0 0 #8a8a98;
 }
 .character-face::before { /* Eyes */
     content: '';
     position: absolute;
-    top: 14px;
-    left: 10px;
-    width: 6px;
-    height: 8px;
-    background: #0a0a0c;
-    box-shadow: 22px 0 0 0 #0a0a0c;
+    top: 12px;
+    left: 8px;
+    width: 5px;
+    height: 7px;
+    background: #09090c;
+    box-shadow: 18px 0 0 0 #09090c;
 }
 .character-face::after { /* Hair/Hat */
     content: '';
@@ -109,67 +323,79 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 12px;
+    height: 10px;
     background: #d9a046;
-    box-shadow: 0 12px 0 0 #d9a046;
-}
-
-/* Pixel Health Bar */
-.pixel-bar-bg {
-    background: #24242a;
-    border: 2px solid #f0f0f5;
-    height: 16px;
-    width: 100%;
-}
-.pixel-bar-fill {
-    background: #d9a046;
-    height: 100%;
-    width: 100%;
-    transition: width 0.3s ease;
+    box-shadow: 0 10px 0 0 #d9a046;
 }
 
 /* Speech Bubble Retro Styling */
 .speech-bubble {
     background: #f0f0f5;
-    color: #0a0a0c;
-    border: 4px solid #0a0a0c;
+    color: #09090c;
+    border: 3px solid #09090c;
     position: relative;
-    box-shadow: 4px 4px 0 0 #d9a046;
+    box-shadow: 3px 3px 0 0 #d9a046;
+    font-family: 'Press Start 2P', monospace;
 }
 
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -12px;
-    right: 24px;
+    bottom: -10px;
+    right: 20px;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 12px solid #f0f0f5;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #f0f0f5;
 }
 
 /* Image Placeholder Frames */
 .image-placeholder-frame {
-    background-color: #16161a;
-    border: 2px dashed #8a8a98;
-    transition: all 0.2s ease;
+    background-color: #0d0d12;
+    border: 2px dashed #2a2a36;
+    transition: all 0.2s steps(2);
 }
 
 .image-placeholder-frame:hover {
     border-color: #d9a046;
-    background-color: #24242a;
+    background-color: #14141c;
+}
+
+/* Carousel Stepped Transitions */
+.carousel-stepped-transition {
+    transition: transform 0.45s steps(8), opacity 0.45s steps(6), filter 0.45s steps(6);
+    will-change: transform, opacity, filter;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #0a0a0c;
-    border-left: 2px solid #24242a;
+    background: #09090c;
+    border-left: 1px solid #1a1a24;
 }
 ::-webkit-scrollbar-thumb {
     background: #d9a046;
-    border: 2px solid #0a0a0c;
+    border: 1px solid #09090c;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    .pixel-reveal,
+    .carousel-stepped-transition,
+    .pixel-bar-segments,
+    .pixel-bar-segments-white,
+    .pixel-star,
+    .pixel-btn-gold,
+    .pixel-btn-ghost {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    .pixel-reveal {
+        opacity: 1 !important;
+    }
 }
