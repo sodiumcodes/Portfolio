@@ -60,7 +60,7 @@ export const questList = [
       'Built interactive Streamlit analytical dashboard with real-time dynamic country/year filters.'
     ],
     github: 'https://github.com/sodiumcodes/RetailPulse',
-    live: 'dashboard-retail-pulse.vercel.app',
+    live: 'https://dashboard-retail-pulse.vercel.app',
     defaultImg: retailPulseImg,
     imgKey: 'p3'
   }
